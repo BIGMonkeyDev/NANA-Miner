@@ -14,10 +14,12 @@ var contractBalance;
 
 
 
+
+
 var contract;
 
 
-const ftnAddress = '0xe9aE8c16C82542b6522D679833c9C571573B5aFC'; //mainnet contract   
+const fountainAddress = '0xe9aE8c16C82542b6522D679833c9C571573B5aFC'; //mainnet contract   
 const tokenAddress = '0xda0F4E3A170019f21728a8168A7236E8c0460f42'; //mainnet Token
 
 var tokenContract;
@@ -26,673 +28,19 @@ var canSell = true;
 
 const tokenAbi = [{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"constant":true,"inputs":[],"name":"_decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]
 
-const ftnAbi = [
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "adr",
-				"type": "address"
-			}
-		],
-		"name": "authorize",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newGrowth",
-				"type": "address"
-			}
-		],
-		"name": "changeGrowth",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newTrash",
-				"type": "address"
-			}
-		],
-		"name": "changeTrash",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "compound",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "ref",
-				"type": "address"
-			}
-		],
-		"name": "deposit",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "wallet",
-				"type": "address"
-			},
-			{
-				"internalType": "bool",
-				"name": "status",
-				"type": "bool"
-			}
-		],
-		"name": "setBlacklist",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address payable",
-				"name": "adr",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "adr",
-				"type": "address"
-			}
-		],
-		"name": "unauthorize",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdraw",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "blacklistActive",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "blacklisted",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_userDeposit",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_lastDepositTime",
-				"type": "uint256"
-			}
-		],
-		"name": "calculateInterest",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "COMPOUND_TAX",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "contractStarted",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "DAILY_INTEREST",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "DEPOSIT_TAX",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "userAddress",
-				"type": "address"
-			}
-		],
-		"name": "getAvailableEarnings",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getBalance",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getSiteInfo",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "_totalStaked",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_totalDeposits",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_totalRefBonus",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_adr",
-				"type": "address"
-			}
-		],
-		"name": "getUserInfo",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "_initialDeposit",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_userDeposit",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_referralReward",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_lastDepositTime",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_totalWithdrawn",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_referrer",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_referrals",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "IRS_TAX_LEVEL_1",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "IRS_TAX_LEVEL_2",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "IRS_TAX_LEVEL_3",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "IRS_TAX_LEVEL_4",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "adr",
-				"type": "address"
-			}
-		],
-		"name": "isAuthorized",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			}
-		],
-		"name": "isOwner",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "MAX_PAYOUT_MULTIPLIER",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "MIN_INVEST_LIMIT",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "PERCENTS_DIVIDER",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "REFERRAL",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "REFERRAL_TOKEN_PER_LEVEL",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "refToken",
-		"outputs": [
-			{
-				"internalType": "contract IToken",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "token",
-		"outputs": [
-			{
-				"internalType": "contract IToken",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "totalDeposits",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "totalRefBonus",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "totalStaked",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "totalWithdrawn",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "users",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "initialDeposit",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "userDeposit",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "lastDepositTime",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "totalWithdrawn",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "referrer",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "referrals",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "referralReward",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "WALLET_DEPOSIT_LIMIT",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "WITHDRAWAL_TAX",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	}
-]
+const fountainAbi = [ { "inputs": [ { "internalType": "address", "name": "adr", "type": "address" } ], "name": "authorize", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "newGrowth", "type": "address" } ], "name": "changeGrowth", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "newTrash", "type": "address" } ], "name": "changeTrash", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "compound", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "uint256", "name": "amount", "type": "uint256" }, { "internalType": "address", "name": "ref", "type": "address" } ], "name": "deposit", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": false, "internalType": "address", "name": "owner", "type": "address" } ], "name": "OwnershipTransferred", "type": "event" }, { "inputs": [ { "internalType": "address", "name": "wallet", "type": "address" }, { "internalType": "bool", "name": "status", "type": "bool" } ], "name": "setBlacklist", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address payable", "name": "adr", "type": "address" } ], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "adr", "type": "address" } ], "name": "unauthorize", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "withdraw", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "blacklistActive", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "", "type": "address" } ], "name": "blacklisted", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "uint256", "name": "_userDeposit", "type": "uint256" }, { "internalType": "uint256", "name": "_lastDepositTime", "type": "uint256" } ], "name": "calculateInterest", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "COMPOUND_TAX", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "contractStarted", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "DAILY_INTEREST", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "DEPOSIT_TAX", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "userAddress", "type": "address" } ], "name": "getAvailableEarnings", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "getBalance", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "getSiteInfo", "outputs": [ { "internalType": "uint256", "name": "_totalStaked", "type": "uint256" }, { "internalType": "uint256", "name": "_totalDeposits", "type": "uint256" }, { "internalType": "uint256", "name": "_totalRefBonus", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "_adr", "type": "address" } ], "name": "getUserInfo", "outputs": [ { "internalType": "uint256", "name": "_initialDeposit", "type": "uint256" }, { "internalType": "uint256", "name": "_userDeposit", "type": "uint256" }, { "internalType": "uint256", "name": "_referralReward", "type": "uint256" }, { "internalType": "uint256", "name": "_lastDepositTime", "type": "uint256" }, { "internalType": "uint256", "name": "_totalWithdrawn", "type": "uint256" }, { "internalType": "address", "name": "_referrer", "type": "address" }, { "internalType": "uint256", "name": "_referrals", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "IRS_TAX_LEVEL_1", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "IRS_TAX_LEVEL_2", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "IRS_TAX_LEVEL_3", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "IRS_TAX_LEVEL_4", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "adr", "type": "address" } ], "name": "isAuthorized", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "account", "type": "address" } ], "name": "isOwner", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "MAX_PAYOUT_MULTIPLIER", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "MIN_INVEST_LIMIT", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "PERCENTS_DIVIDER", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "REFERRAL", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "REFERRAL_TOKEN_PER_LEVEL", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "refToken", "outputs": [ { "internalType": "contract IToken", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "token", "outputs": [ { "internalType": "contract IToken", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalDeposits", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalRefBonus", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalStaked", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalWithdrawn", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "", "type": "address" } ], "name": "users", "outputs": [ { "internalType": "uint256", "name": "initialDeposit", "type": "uint256" }, { "internalType": "uint256", "name": "userDeposit", "type": "uint256" }, { "internalType": "uint256", "name": "lastDepositTime", "type": "uint256" }, { "internalType": "uint256", "name": "totalWithdrawn", "type": "uint256" }, { "internalType": "address", "name": "referrer", "type": "address" }, { "internalType": "uint256", "name": "referrals", "type": "uint256" }, { "internalType": "uint256", "name": "referralReward", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "WALLET_DEPOSIT_LIMIT", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "WITHDRAWAL_TAX", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" } ]
 
 // ------ contract calls
 function loadContracts() {
     console.log('Loading contracts...')
     web3 = window.web3
-    contract = new web3.eth.Contract(ftnAbi, ftnAddress);
+    contract = new web3.eth.Contract(fountainAbi, fountainAddress);
     tokenContract = new web3.eth.Contract(tokenAbi, tokenAddress);
     console.log('Done loading contracts.')
 }
 
 function myReferralLink(address) {
-    var prldoc = document.getElementById('reflink');    
+    var prldoc = document.getElementById('reflink');
     // Get the current page URL
     var currentPageURL = window.location.href;
     // Update the referral link content
@@ -703,7 +51,7 @@ function myReferralLink(address) {
 }
 
 
-async function myConnect(){
+async function myConnect() {
     var element = document.getElementById("dotting");
     element.classList.toggle("dot");
 }
@@ -896,7 +244,7 @@ function refreshData() {
             console.log('balanceOf', err)
         });
 
-        tokenContract.methods.allowance(currentAddr, ftnAddress).call().then(result => {
+        tokenContract.methods.allowance(currentAddr, fountainAddress).call().then(result => {
             spend = web3.utils.fromWei(result)
             if (spend > 0 && started) {
                 $('#user-approved-spend').html(roundNum(spend));
@@ -918,46 +266,16 @@ function refreshData() {
             var totalWithdrawn = user._totalWithdrawn;
             
             var referrals = user._referrals;
-            var referralRewards = user._referralReward;
+            var referralReward = user._referralReward;
             
-            var withdrawCount = user._withdrawCount;
-            var lastWithdrawTime = user._lastWithdrawTime;
+            
+            var lastWithdrawTime = user._lastDepositTime;
 
             console.log('last withdraw time = ' + lastWithdrawTime)
 
             var now = new Date().getTime() / 1000;
 
-            var diff = (+lastHatch + +compoundStep) - now;
-            if (diff > 0) {
-                setCompoundTimer(lastHatch);
-            } else {
-                $(".compound-timer").text("00:00:00");
-                $('#reinvest').attr('disabled', false)
-            }
-            var extraPercent = 0;
-            console.log('dailyCompoundBonus = ' + dailyCompoundBonus)
-        $("#compound-count").html(`${dailyCompoundBonus} Time/s`);
-            if (dailyCompoundBonus > 0) {
-                extraPercent += dailyCompoundBonus * compoundPercent;
-                $("#compound-bonus").html(`+${extraPercent}%`);
-            } else {
-                $("#reinvest").text("Deploy More Explorers");
-            }
-
-            var cutOffDiff = (+lastHatch + +cutoffStep) - now;
-            if (cutOffDiff > 0) {
-                setCutoffTimer(lastHatch)
-            } else {
-                $("#claim-timer").html("00:00:00")
-            }
-
-            var coolDownDiff = (+lastHatch + +withdrawCooldown) - now;
-            if (coolDownDiff > 0) {
-                setCooldownTimer(coolDownDiff)
-            } else {
-                $("#cooldown-timer").html("");
-                $("#withdraw").attr('disabled', false);
-            }
+            
 
             if (miners > 0) {
                 $("#your-miners").html(miners);
@@ -974,8 +292,8 @@ function refreshData() {
                 $("#mined").html(0);
             }
 
-            if (referralEggRewards > 0) {
-                var refBUSD = readableBUSD(referralEggRewards, 2);
+            if (referralRewards > 0) {
+                var refBUSD = readableBUSD(referralReward, 2);
                 $("#ref-rewards-busd").html(refBUSD);
                 // var refUSD = Number(priceInUSD*refBUSD).toFixed(2);
                 // $('#ref-rewards-usd').html(refUSD)
@@ -989,31 +307,7 @@ function refreshData() {
             setTotalWithdrawn(totalWithdrawn);
 
 
-            if (miners > 0) {
-                var eggsPerDay = 24*60*60 * miners ;
-                contract.methods.calculateEggSellForYield(eggsPerDay, web3.utils.toWei('100')).call().then(earnings => {
-                    var eggsBUSD = readableBUSD(earnings, 4)
-                    $("#eggs-per-day").html(eggsBUSD);
-                    // var eggsUSD = Number(priceInUSD*eggsBUSD).toFixed(2);
-                    // $('#eggs-per-day-usd').html(eggsUSD)
-                }).catch((err) => {
-                    console.log('calculateEggSellForYield', err);
-                    throw err;
-                });
-            }
-            //if dailyCompoundBonus < 5
-            if (parseInt(dailyCompoundBonus) < parseInt(compoundCount)) {
-                contract.methods.WITHDRAWAL_TAX().call().then(tax => {
-                    $("#withdraw-tax").html(`(-${tax/10}% tax)`)
-            console.log('dailyCompoundBonus < compoundCount = true');   
-                }).catch((err) => {
-                    console.log('WITHDRAWAL_TAX', err);
-                    throw err;
-                });
-            } else {
-                $('#withdraw-tax').attr('hidden', true)
-            console.log('dailyCompoundBonus < compoundCount = false'); 
-            }
+            
         }).catch((err) => {
             console.log('getUserInfo', err);
         });
@@ -1064,104 +358,10 @@ function setTotalWithdrawn(totalWithdrawn) {
     // $("#total-withdrawn-usd").html(totalUSD);
 }
 
-var x;
-function setCompoundTimer(lastHatch) {
-    $('#reinvest').attr('disabled', true)
-    var now = new Date().getTime();
-    var diff = (+lastHatch + +compoundStep) - (now / 1000);
-    var countDownDate = new Date(+now + +diff * 1000).getTime();
-
-    clearInterval(x)
-    x = setInterval(function () {
-        var currTime = new Date().getTime();
-        // Find the distance between now and the count down date
-        var distance = countDownDate - currTime;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) + days*24);
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
-        if (hours < 10) { hours = '0' + hours; }
-        if (minutes < 10) { minutes = '0' + minutes; }
-        if (seconds < 10) { seconds = '0' + seconds; }
 
-        $("#compound-timer").html(`${hours}h:${minutes}m:${seconds}s`);
 
-        // If the count down is finished, write some text
-        if (distance < 0) {
-            $("#compound-timer").html("<span>00:00:00</span>");
-            $('#reinvest').attr('disabled', false)
-        }
-    }, 1000, 1);
-}
-
-let y;
-function setCutoffTimer(lastHatch) {
-    var time = new Date().getTime();
-    var cutoff = (+lastHatch + +cutoffStep) - (+time/1000);
-    var countDownDate = new Date(+time + +cutoff * 1000).getTime();
-
-    clearInterval(y)
-    y = setInterval(function() {
-        var currentTime = new Date().getTime();
-        // Find the distance between now and the count down date
-        var distance = countDownDate - currentTime;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) + days*24);
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        if (hours < 10) { hours = '0' + hours; }
-        if (minutes < 10) { minutes = '0' + minutes; }
-        if (seconds < 10) { seconds = '0' + seconds; }
-
-        $("#claim-timer").html(`<strong>${hours}h:${minutes}m:${seconds}s</strong>`);
-
-        // If the count down is finished, write some text
-        if (distance < 0) {
-            clearInterval(y);
-            $("#claim-timer").html("<span>0:00:00</span>");
-        }
-    }, 1000, 1);
-}
-
-var z;
-function setCooldownTimer(cooldown) {
-    $("#withdraw").attr('disabled', true);
-    var time = new Date().getTime();
-    var endDate = new Date(+time + +cooldown * 1000).getTime();
-
-    clearInterval(z)
-    z = setInterval(function() {
-        var currTime = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        var distance = endDate - currTime;
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)  + days*24);
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        if (hours < 10) { hours = '0' + hours; }
-        if (minutes < 10) { minutes = '0' + minutes; }
-        if (seconds < 10) { seconds = '0' + seconds; }
-
-        $("#cooldown-timer").html(`in ${hours}h:${minutes}m:${seconds}s`);
-
-        // If the count down is finished, write some text
-        if (distance < 0) {
-            clearInterval(z);
-            $("#withdraw").attr('disabled', false);
-            $("#cooldown-timer").html("");
-        }
-    }, 1000, 1);
-}
 
 var startTimeInterval;
 function setStartTimer() {
@@ -1214,7 +414,7 @@ function approve(_amount) {
         amt = 0
     }
     let _spend = web3.utils.toWei(amt.toString())
-    tokenContract.methods.approve(ftnAddress, _spend).send({ from: currentAddr }).then(result => {
+    tokenContract.methods.approve(fountainAddress, _spend).send({ from: currentAddr }).then(result => {
         if (result) {
             $('#busd-spend').attr('disabled', false);
             $('#buy-eggs-btn').attr('disabled', false);
@@ -1234,36 +434,36 @@ function approveToken() {
 }
 
 
-async function deposittoken(){
+function depositToken(){ 
     var spendDoc = document.getElementById('busd-spend')
     var busd = spendDoc.value;
 	
     var amt = web3.utils.toWei(busd);
 	if(+amt < +minDeposit) {
-		alert(`you cannot deposit less than ${readableBUSD(minDeposit, 2)} PLSX`);
+		alert(`you cannot deposit less than ${readableBUSD(minDeposit, 2)} Bananas`);
         return
     }
 	
 	var amt = web3.utils.toWei(busd);
 	if(+amt + +totalDeposits > +maxDeposit) {
-		alert(`you cannot deposit more than ${readableBUSD(maxDeposit, 2)} PLSX`);
+		alert(`you cannot deposit more than ${readableBUSD(maxDeposit, 2)} Bananas`);
         return
     }
 	
     if(+amt > usrBal) {
-		alert("you do not have " + busd + " PLSX in your wallet");
+		alert("you do not have " + busd + " Bananas in your wallet");
         return
     }
     if (+spend < +busd) {
         var amtToSpend = busd - spend;
-        alert("you first need to approve " + amtToSpend + " PLSX before depositing");
+        alert("you first need to approve " + amtToSpend + " Bananas before depositing");
         return
     }
 
     let ref = getQueryVariable('ref');
     if (busd > 0) {
         if (!web3.utils.isAddress(ref)) { ref = currentAddr }
-        contract.methods.depositToken(ref, amt).send({ from: currentAddr }).then(result => {
+        contract.methods.deposit(amt , ref).send({ from: currentAddr }).then(result => {
             refreshData()
         }).catch((err) => {
             console.log(err)
@@ -1275,7 +475,7 @@ function hatchEggs(){
     if (canSell) {
         canSell = false;
         console.log(currentAddr)
-        contract.methods.hatchEggs(true).send({ from: currentAddr}).then(result => {
+        contract.methods.compound(true).send({ from: currentAddr}).then(result => {
             refreshData()
         }).catch((err) => {
             console.log(err)
@@ -1292,7 +492,7 @@ function sellEggs(){
     if (canSell) {
         canSell = false;
         console.log('Selling');
-        contract.methods.sellEggs().send({ from: currentAddr }).then(result => {
+        contract.methods.withdraw().send({ from: currentAddr }).then(result => {
             refreshData()
         }).catch((err) => {
             console.log(err)

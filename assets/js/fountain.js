@@ -183,7 +183,7 @@ function refreshData() {
         contract.methods.getBalance().call().then(balance => {
             contractBalance = balance;
             var amt = web3.utils.fromWei(balance);
-            $('#contract-balance').html(roundNum(amt));
+            $('').html(roundNum(amt));
             // var usd = Number(priceInUSD*amt).toFixed(2);
             // $("#contract-balance-usd").html(usd)
         }).catch((err) => {
@@ -192,7 +192,7 @@ function refreshData() {
 
         contract.methods.getSiteInfo().call().then(result => {
             var staked = web3.utils.fromWei(result._totalStaked);
-            $('#total-staked').html(roundNum(staked));	
+            $('#contract-balance').html(roundNum(staked));	
             //$('#total-staked').html(staked);
             // var stakedUSD = Number(priceInUSD*staked).toFixed(2);
             // $("#total-staked-usd").html(stakedUSD)
@@ -313,7 +313,7 @@ function refreshData() {
         });
 
     }
-    updateBuyPrice();
+    
     console.log('Done refreshing data...')
 }
 
@@ -396,14 +396,7 @@ function setStartTimer() {
     }, 1000, 1);
 }
 
-function updateBuyPrice(busd) {
-    if (busd == undefined || !busd) {
-        busd = document.getElementById('busd-spend').value;
-    }
-    contract.methods.calculateEggBuySimple(web3.utils.toWei(busd)).call().then(eggs => {
-        $("#eggs-to-buy").html(parseFloat(eggs/eggstohatch1).toFixed(2));
-    });
-}
+
 
 function approve(_amount) {
     let amt;
@@ -473,7 +466,7 @@ function depositToken(){
 
 function hatchEggs(){
     if (canSell) {
-        canSell = false;
+        
         console.log(currentAddr)
         contract.methods.compound(true).send({ from: currentAddr}).then(result => {
             refreshData()
@@ -490,7 +483,7 @@ function hatchEggs(){
 
 function sellEggs(){
     if (canSell) {
-        canSell = false;
+        
         console.log('Selling');
         contract.methods.withdraw().send({ from: currentAddr }).then(result => {
             refreshData()

@@ -146,7 +146,13 @@ function refreshData() {
         // return;
     }
 
-
+    contract.methods.COMPOUND_TAX().call().then(r => {
+        var cmpTAX = Number(r / 10).toFixed(0);
+        $("#cmp-tax").html(`${cmpTAX}% Compound Fee`)
+        $("#cmp-percent").html(`${cmpTAX}%`)
+    }).catch((err) => {
+        console.log('COMPOUND_TAX', err);
+    });
     
 
     contract.methods.REFERRAL().call().then(r => {

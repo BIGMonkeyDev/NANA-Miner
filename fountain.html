@@ -210,7 +210,7 @@
         <div class="content-box">
           <h3 class="text-start busd pb-1"
             style="color:var(--token); letter-spacing: 2px; font-size: x-large; font-family: kanit !important;display: flex;justify-content: center;font-weight: 700;">
-            Commanders' Log
+            Dick Measuring Contest
           </h3>
           <hr>
           <div class="stat d-flex justify-between">
@@ -328,21 +328,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="timer" style="color:white;">
-                  <i class="bi-hourglass-split"></i>
-                  Countdown until Rewards are Cut Off
-                </div>
-                <div style="text-align: center;">
-                  <span id="claim-timer">00:00:00</span>
-                </div>
-                <br>
-                <div class="timer" style="color:white;">
-                  <i class="bi bi-clock"></i>
-                  Time until next Deployment Bonus is Activated
-                </div>
-                <div style="text-align: center;">
-                  <span id="compound-timer"> --:--:--</span>
-                </div>
+                
                 <br>
                 <div class="btn-container">
                     <strong style="padding-left: 5px; padding-bottom: 5px" ;>
@@ -360,7 +346,7 @@
                       <input class="form-control" id="approve-spend" name="approved-spend" step="100" type="number" value="1">
                     </strong>
                     <button class="start-btn3" style="width: 100%;margin-bottom: 10px; margin-top: 15px;" id=""
-                      onclick="approveToken()" role="button" type="button" style="margin-top: 5px;">Approve Explorers</button>
+                      onclick="approveToken()" role="button" type="button" style="margin-top: 5px;">Approve</button>
                       
                   </div>
                 <div class="btn-container">
@@ -379,9 +365,8 @@
                   </strong>
                   <button class="start-btn3" style="width: 100%;margin-bottom: 10px; margin-top: 15px;" id="buy-eggs-btn"
                     onclick="depositToken()" role="button" disabled>
-                    Deploy
-                    <span id="eggs-to-buy">0</span>
-                    Explorers
+                    Enter Fountain
+                    
                   </button>
                 </div>
               </div>
@@ -391,13 +376,7 @@
               <div class="deposit-container">
                 <div class="miners-info" style="margin-bottom: unset;">
                   <div>
-                    <i class="bi-minecart"></i>
-                    <span id="your-miners">0 </span>
-                    Explorers
-                  </div>
-                  <div>
-                    <i class="bi-arrow-down-short" style="font-size: 27px;"></i>
-                  </div>
+                    
                   <div style="font-size: 25px;">
                     <i class="ri-coins-line ri-1x"></i>
                     <strong id="mined">0</strong>
@@ -407,39 +386,24 @@
                   <!-- <span class="usd" style="font-size: 14px;">
                     ≈ $<span id="mined-usd" >0 </span> USD
                   </span> -->
-                  <div class="timer" style="color:white;">
-                    Estimated Daily Yield:
-                  </div>
-                  <div style="text-align: center;">
-                    <span id="eggs-per-day">0</span>
-                    <strong class="busd">Bananas</strong>
-                  </div>
-                </div>
-                <div>
+                  
                   <br>
-                  <div class="timer" style="color:white;">
-                    <i class="bi-arrow-repeat"></i>
-                    Deployment Count:
-                  </div>
-                  <div style="text-align: center;">
-                    <span id="compound-count">0 Time/s</span>
-                  </div>
+                  
                   <div class="btn-container">
                     <div style="padding-top: 6px;padding-bottom: 14px;">
                       <button class="btn start-btn"
                       style="width: 100%;background: transparent;border: 1px solid white;padding: 8px;margin-top: 5px;"
                       id="withdraw" onclick="sellEggs()" role="button" disabled>
-                      Collect Rewards
-                      <span class="cooldown" id="cooldown-timer">in 00:00:00</span>
-                      <span class="tax" id="withdraw-tax">-80% tax</span>
+                      Collect
+                      
                     </button>
                   </div>
                   <div>
                     <button class="btn start-btn3" style="width: 100%;" id="reinvest" onclick="hatchEggs()"
                       role="button" disabled>
-                      Deploy More Explorers
+                      Compound
                       <span class="compound">
-                        (<span class="compound" id="compound-bonus">+0%</span>)
+                        
                         </span>
                       </button>
                     </div>
@@ -450,10 +414,7 @@
             <hr />
           </div>
           <div class="mt-1 text-center" style="padding: 10px; font-size: 15px; font-weight: 500;">
-            Every time you Deploy without Collecting Rewards, your Deployment bonus grows by
-            <span id="compound-percent">0%</span>
-            (max <span id="max-compound">+0%</span>). Deploying 10 times will reset your bonus to 1.  Collecting Rewards will reset your bonus to 0.
-            <br>
+            PUt Some LAme text here
             <!--  Time until next compound bonus is activated: <span style="font-weight: 700;" id="compound-timer">00:00:00</span> -->
           </div>
           <hr />

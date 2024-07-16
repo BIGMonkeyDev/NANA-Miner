@@ -4,7 +4,7 @@ var spend;
 var usrBal;
 var priceInUSD;
 
-var lastSecondsUntilFull=100
+
 
 var maxDeposit=0
 var minDeposit=0

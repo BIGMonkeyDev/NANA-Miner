@@ -267,25 +267,14 @@ function refreshData() {
 
         contract.methods.getUserInfo(currentAddr).call().then(user => {
             var initialDeposit = user._initialDeposit;
-            var userDeposit = user._userDeposit;
-            
-            var totalWithdrawn = user._totalWithdrawn;
-            
+            var userDeposit = user._userDeposit;            
+            var totalWithdrawn = user._totalWithdrawn;            
             var referrals = user._referrals;
-            var referralReward = user._referralReward;
-            
-            
+            var referralReward = user._referralReward;          
             var lastWithdrawTime = user._lastDepositTime;
-
             console.log('last withdraw time = ' + lastWithdrawTime)
 
             var now = new Date().getTime() / 1000;
-
-            
-
-            
-
-            
 
             setInitialDeposit(initialDeposit);
             setTotalDeposit(userDeposit);
@@ -293,8 +282,6 @@ function refreshData() {
             setReferralReward(referralReward);
             setReferrals(referrals);
 
-
-            
         }).catch((err) => {
             console.log('getUserInfo', err);
         });
@@ -370,14 +357,9 @@ function setReferrals(referrals) {
     // $("#total-withdrawn-usd").html(totalUSD);
 }
 
-
-
-
-
-
 var startTimeInterval;
 function setStartTimer() {
-    var endDate = new Date('April 18, 2022 9:00 EST').getTime();
+    var endDate = new Date().getTime();
 
     clearInterval(startTimeInterval)
     startTimeInterval = setInterval(function() {
@@ -402,6 +384,7 @@ function setStartTimer() {
         if (distance < 0) {
             clearInterval(startTimeInterval);
             $("#start-container").remove();
+            
             started = true;
             refreshData()
         }
@@ -477,37 +460,33 @@ function depositToken(){
 }
 
 function hatchEggs(){
-    if (amt > 0) {
-        
-        console.log(currentAddr)
-        contract.methods.compound(true).send({ from: currentAddr}).then(result => {
-            refreshData()
-        }).catch((err) => {
-            console.log(err)
-        });
-        setTimeout(function(){
-            canSell = true;
-        },10000);
-    } else {
-        console.log('Cannot hatch yet...')
-    }
+       
+    contract.methods.compound().send({ from: currentAddr}).then(result => {
+    refreshData()
+    }).catch((err) => {
+    console.log(err)
+    });
+    setTimeout(function(){
+            
+    },10000);
+    
+    console.log('Settle Down Ape...')
+    
 }
 
-function sellEggs(){
-    if (amt > 0) {
-        
-        console.log('Selling');
-        contract.methods.withdraw().send({ from: currentAddr }).then(result => {
-            refreshData()
-        }).catch((err) => {
-            console.log(err)
-        });
-        setTimeout(function(){
-            canSell = true;
-        },10000);
-    } else {
-        console.log('Cannot sell yet...')
-    }
+function sellToken(){
+       
+    contract.methods.withdraw().send({ from: currentAddr }).then(result => {
+    refreshData()
+    }).catch((err) => {
+    console.log(err)
+    });
+    setTimeout(function(){
+           
+    },10000);
+    
+    console.log('Why Are You In Such A Rush...')
+    
 }
 
 function getBalance(callback){

@@ -182,6 +182,13 @@ function refreshData() {
     });
 
     
+    contract.methods.userCount().call().then(userCount => {
+        $("#total-players").html(userCount);
+    }).catch((err) => {
+        console.log('getUserCount', err);
+    });
+    
+    
 
     
 
@@ -202,7 +209,7 @@ function refreshData() {
             //$('#total-staked').html(staked);
             // var stakedUSD = Number(priceInUSD*staked).toFixed(2);
             // $("#total-staked-usd").html(stakedUSD)
-            $('#total-players').html(result._totalDeposits);
+            
             var ref = result._totalRefBonus;
             if (ref > 0) {
                 var refBUSD = readableBUSD(ref, 2);
@@ -210,6 +217,9 @@ function refreshData() {
                 // var refUSD = Number(priceInUSD*refBUSD).toFixed(2);
                 // $('#total-ref-usd').html(refUSD)
             }
+
+            
+
         }).catch((err) => {
             console.log('getSiteInfo', err);
         });

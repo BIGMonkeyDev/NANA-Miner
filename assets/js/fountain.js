@@ -196,7 +196,7 @@ function refreshData() {
         contract.methods.getBalance().call().then(balance => {
             contractBalance = balance;
             var amt = web3.utils.fromWei(balance);
-            $('').html(roundNum(amt));
+            $('#contract-balance').html(roundNum(amt));
             // var usd = Number(priceInUSD*amt).toFixed(2);
             // $("#contract-balance-usd").html(usd)
         }).catch((err) => {
@@ -205,7 +205,7 @@ function refreshData() {
 
         contract.methods.getSiteInfo().call().then(result => {
             var staked = web3.utils.fromWei(result._totalStaked);
-            $('#contract-balance').html(roundNum(staked));	
+            $('').html(roundNum(staked));	
             //$('#total-staked').html(staked);
             // var stakedUSD = Number(priceInUSD*staked).toFixed(2);
             // $("#total-staked-usd").html(stakedUSD)

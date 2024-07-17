@@ -283,34 +283,15 @@ function refreshData() {
 
             
 
-            if (miners > 0) {
-                $("#your-miners").html(miners);
-                contract.methods.getAvailableEarnings(currentAddr).call().then(function (earnings) {
-                    var busdMined = readableBUSD(earnings, 4)
-                    $("#mined").html(busdMined);
-                    // var minedUsd = Number(priceInUSD*busdMined).toFixed(2);
-                    // $('#mined-usd').html(minedUsd)
-                }).catch((err) => {
-                    console.log('getAvailableEarnings', err);
-                    throw err;
-                });
-            } else {
-                $("#mined").html(0);
-            }
+            
 
-            if (referralRewards > 0) {
-                var refBUSD = readableBUSD(referralReward, 2);
-                $("#ref-rewards-busd").html(refBUSD);
-                // var refUSD = Number(priceInUSD*refBUSD).toFixed(2);
-                // $('#ref-rewards-usd').html(refUSD)
-                $('#ref-count').html(referrals);
-            } else {
-                $("#ref-rewards").html("0".concat(' '.concat('Miners')));
-            }
+            
 
             setInitialDeposit(initialDeposit);
             setTotalDeposit(userDeposit);
             setTotalWithdrawn(totalWithdrawn);
+            setReferralReward(referralReward);
+            setReferrals(referrals);
 
 
             
@@ -361,6 +342,20 @@ function setTotalWithdrawn(totalWithdrawn) {
     var totalBUSD = readableBUSD(totalWithdrawn, 2);
     // var totalUSD = Number(priceInUSD*totalBUSD).toFixed(2);
     $("#total-withdrawn").html(totalBUSD);
+    // $("#total-withdrawn-usd").html(totalUSD);
+}
+
+function setReferralReward(referralReward) {
+    var totalBUSD = readableBUSD(referralReward, 2);
+    // var totalUSD = Number(priceInUSD*totalBUSD).toFixed(2);
+    $("#referral-Reward").html(totalBUSD);
+    // $("#total-withdrawn-usd").html(totalUSD);
+}
+
+function setReferrals(referrals) {
+    var totalBUSD = readableBUSD(referrals, 2);
+    // var totalUSD = Number(priceInUSD*totalBUSD).toFixed(2);
+    $("#ref-count").html(referrals);
     // $("#total-withdrawn-usd").html(totalUSD);
 }
 
@@ -471,7 +466,7 @@ function depositToken(){
 }
 
 function hatchEggs(){
-    if (canSell) {
+    if (amt > 0) {
         
         console.log(currentAddr)
         contract.methods.compound(true).send({ from: currentAddr}).then(result => {
@@ -488,7 +483,7 @@ function hatchEggs(){
 }
 
 function sellEggs(){
-    if (canSell) {
+    if (amt > 0) {
         
         console.log('Selling');
         contract.methods.withdraw().send({ from: currentAddr }).then(result => {

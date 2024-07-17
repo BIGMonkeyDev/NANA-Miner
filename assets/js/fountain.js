@@ -299,6 +299,17 @@ function refreshData() {
             console.log('getUserInfo', err);
         });
 
+        contract.methods.getAvailableEarnings(currentAddr).call().then(function (earnings) {
+            var busdMined = readableBUSD(earnings, 4)
+            $("#mined").html(busdMined);
+            // var minedUsd = Number(priceInUSD*busdMined).toFixed(2);
+            // $('#mined-usd').html(minedUsd)
+        }).catch((err) => {
+            console.log('getAvailableEarnings', err);
+            throw err;
+        });
+    
+
     }
     
     console.log('Done refreshing data...')

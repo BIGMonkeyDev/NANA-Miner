@@ -367,34 +367,26 @@ function setReferrals(referrals) {
     // $("#total-withdrawn-usd").html(totalUSD);
 }
 
-function approveRef() {
-    var newReferrerAddress = document.getElementById("new-referrer-address").value.trim();
+function approveRef(newReferrer) {
+    var newReferrer = document.getElementById("new-referrer-address").value.trim();
 
-    if (newReferrerAddress === "") {
+    if (newReferrer === "") {
         alert("Please enter a valid wallet address");
         return;
     }
 
     // Assuming you have a Web3 instance and contract methods set up
-    contract.methods.changeReferrer(newReferrerAddress).send({ from: userWalletAddress })
-        .on('transactionHash', function(hash){
-            // Handle transaction hash event if needed
-            console.log("Transaction Hash: ", hash);
-        })
-        .on('confirmation', function(confirmationNumber, receipt){
-            // Handle confirmation event if needed
-            console.log("Confirmation Number: ", confirmationNumber);
-            console.log("Receipt: ", receipt);
-            // Optionally update UI or show success message
-        })
-        .on('error', function(error, receipt) {
-            // Handle error event
-            console.error("Error: ", error);
-            if (receipt) {
-                console.error("Receipt: ", receipt);
-            }
-            // Optionally show error message to user
-        });
+    contract.methods.changeReferrer(newReferrer).send({ from: currentAddr }).then(result => {
+        refreshData()
+    }).catch((err) => {
+    console.log(err)
+    });
+    setTimeout(function(){
+            
+    },10000);
+    
+    console.log('Settle Down Ape...')
+    
 }
 
 

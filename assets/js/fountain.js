@@ -163,9 +163,13 @@ function refreshData() {
         console.log('REFERRAL', err);
     });
 
-    
-	
-	
+    contract.methods.DAILY_INTEREST().call().then(r => {
+        var dailyPercent = Number(r / 10).toFixed(0);
+        $("#dbonus").html(`${dailyPercent}% Daily Percent`)
+        $("#dpercent").html(`${dailyPercent}%`)
+    }).catch((err) => {
+        console.log('DAILY_INTEREST', err);
+    });
 
     contract.methods.WALLET_DEPOSIT_LIMIT().call().then(busd => {
         maxDeposit = busd;

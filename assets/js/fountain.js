@@ -19,7 +19,7 @@ var contractBalance;
 var contract;
 
 
-const fountainAddress = '0x4B460C5115fbD89d37c57bD8918AD46BcBAC5940'; //mainnet contract   
+const fountainAddress = '0x6EC245d96A28fEc2827473fD2720B8B6B4590467'; //mainnet contract   
 const tokenAddress = '0xda0F4E3A170019f21728a8168A7236E8c0460f42'; //mainnet Token
 
 var tokenContract;

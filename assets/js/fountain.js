@@ -285,6 +285,7 @@ function refreshData() {
             var userDeposit = user._userDeposit;            
             var totalWithdrawn = user._totalWithdrawn;            
             var referrals = user._referrals;
+            var refuser = user._referrer;
             var referralReward = user._referralReward;          
             var lastWithdrawTime = user._lastDepositTime;
             console.log('last withdraw time = ' + lastWithdrawTime)
@@ -296,6 +297,7 @@ function refreshData() {
             setTotalWithdrawn(totalWithdrawn);
             setReferralReward(referralReward);
             setReferrals(referrals);
+            setRef(refuser);
 
         }).catch((err) => {
             console.log('getUserInfo', err);
@@ -371,6 +373,32 @@ function setReferrals(referrals) {
     $("#ref-count").html(referrals);
     // $("#total-withdrawn-usd").html(totalUSD);
 }
+
+function setRef(refuser) {
+    var referrerElement = document.getElementById('referrer-address');
+    
+    if (referrerElement) {
+        // Ensure refuser is at least 9 characters long to avoid errors
+        if (refuser.length > 9) {
+            // Extract the first 5 and last 4 characters
+            var firstPart = refuser.substring(0, 5);
+            var lastPart = refuser.slice(-4);
+
+            // Construct the displayed address
+            referrerElement.textContent = `${firstPart}...${lastPart}`;
+        } else {
+            // If the address is too short, display it as is
+            referrerElement.textContent = refuser;
+        }
+    } else {
+        console.error('Referrer element not found');
+    }
+
+    // Optional: You can also log it to the console or perform other actions
+    console.log('Referrer Address Set:', refuser);
+}
+
+
 
 function approveRef(newReferrer) {
     var newReferrer = document.getElementById("new-referrer-address").value.trim();

@@ -260,7 +260,7 @@
           
           <div class="first-box">
             <div class="deposit-container d-flex justify-content-between">
-              <div class="btn-container">
+              <div class="btn-container" data-width="48%">
                 <strong style="padding-left: 5px; padding-bottom: 5px;">
                   Approve <span class="busd">Bananas</span>
                   <span class="usd">( <span id="user-approved-spend">0</span> Bananas Approved)</span>
@@ -271,7 +271,7 @@
                   Approve
                 </button>
               </div>
-              <div class="btn-container">
+              <div class="btn-container" data-width="48%">
                 <strong style="padding-left: 5px; padding-bottom: 5px;">
                   Deposit <span class="busd">Bananas</span>
                   <span class="usd">( Min <span class="busd" id="min-deposit">0 </span>,
@@ -286,6 +286,7 @@
               </div>
             </div>
           </div>
+          
           
             
             
@@ -308,19 +309,27 @@
                     ≈ $<span id="mined-usd" >0 </span> USD
                   </span> -->  
                   <br>  
-                  <div class="btn-container d-flex justify-content-between">
-                    <div style=" width: 49.5%;">
-                      <button class="btn start-btn3" style="width: 100%;" id="withdraw" onclick="sellToken()" role="button">
-                        Collect
-                      </button>
-                    </div>
-                    <div style="width: 49%;">
-                      <button class="btn start-btn3" style="width: 100%;" id="reinvest" onclick="roll()" role="button">
-                        Compound
-                        <span class="compound"></span>
-                      </button>
+                  <div class="first-box">
+                    <div class="deposit-container d-flex justify-content-between">
+                      <div class="btn-container" style="width: 50%;">
+                        <strong style="padding-left: 5px; padding-bottom: 5px;">
+                          <button class="btn start-btn3" style="width: 100%; margin-bottom: 10px; margin-top: 15px;" id="withdraw" onclick="sellToken()" role="button">
+                            Collect
+                          </button>
+                        </strong>
+                      </div>
+                      <div class="btn-container" style="width: 50%;">
+                        <strong style="padding-left: 7px; padding-bottom: 5px;">
+                          <button class="btn start-btn3" style="width: 100%; margin-bottom: 10px; margin-top: 15px;" id="reinvest" onclick="roll()" role="button">
+                            Compound
+                            <span class="compound"></span>
+                          </button>
+                        </strong>
+                      </div>
                     </div>
                   </div>
+                  
+                  
                   
             
           </div>

@@ -67,28 +67,14 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
               <li>
-                  <a class="nav-link">
+                  <a class="nav-item">
                       <button id="enableMetamask" class="connect-btn" onclick="myConnect()">
                           <span class="icon icon-connect"></span>
                           <span>Connect</span>
                       </button>
                   </a>
               </li>
-              <li>
-                  <div class="dropdown">
-                      <button class="dropbtn">Socials</button>
-                      <div class="dropdown-content">
-                          <a class="nav-item" href="https://twitter.com/EternalReflects" target="_blank">
-                              <img class="nav-logo" id="Twitter" alt="" src="assets/img/twitter.svg" />
-                              Twitter
-                          </a>
-                          <a class="nav-item" href="https://t.me/EternalReflections" target="_blank">
-                              <img class="nav-logo" id="telegram" alt="" src="assets/img/telegram.svg" />
-                              Telegram
-                          </a>
-                      </div>
-                  </div>
-              </li>
+              
               <li class="nav-item">
                   <a class="nav-link text-light" href="https://prime-ape.com/"><strong>WhitePaper</strong></a>
               </li>
@@ -98,6 +84,20 @@
               <li class="nav-item">
                   <a class="nav-link text-light" href="https://bafybeicb2hlad6zs4kc4yvn5xbbzti6krjtpoxrysg42d4e5s5oubbipum.ipfs.dweb.link/#/address/0xB19D9375a964455F39D404fBC03Ff4c9aF986780"><strong>Fountain Contract</strong></a>
               </li>
+              <div class="dropdown">
+                <button class="dropbtn">Socials</button>
+                <div class="dropdown-content">
+                    <a class="nav-item" href="https://twitter.com/EternalReflects" target="_blank">
+                        <img class="nav-logo" id="Twitter" alt="" src="assets/img/twitter.svg" />
+                        Twitter
+                    </a>
+                    <a class="nav-item" href="https://t.me/EternalReflections" target="_blank">
+                        <img class="nav-logo" id="telegram" alt="" src="assets/img/telegram.svg" />
+                        Telegram
+                    </a>
+                </div>
+            </div>
+        </li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle "></i>
       </nav>
@@ -169,102 +169,68 @@
             <br>
             <div class="text-center">
               <h3 class="text-center texting" style="margin-left: 5px;">              
-                  Benefits
+                Personal Fountain Stats
               </h3>
               <hr>
-              <img src="assets/img/benefits.png" alt="Benefits" style="width: 100%; height: auto;" />
-          </div>
-        </div>
-      </div>
-      <div class="border-4 border-[#00BF63] w-full bg-[#000000a3] h-fit rounded-lg">
-        <div class="shadow-lg p-2 border-t-transparent border-t-4 border-l-4 border-l-transparent border-transparent-500  text-[#ff0099] text-center rounded-lg">
-        <div class="p-2">
-            <div>
-        </div>
-        <div class="content-box">
-          <h3 class="text-start busd pb-1"
-            style="color:var(--token); letter-spacing: 2px; font-size: x-large; font-family: kanit !important;display: flex;justify-content: center;font-weight: 700;">
-            Personal Fountain Stats
-          </h3>
-          <hr>
-          <div class="stat d-flex justify-between">
-            <div class="header">
-              <i class="ri-coins-fill">
-              </i>&nbsp;
-              <span>
-                Initial Deposit :
-              </span>
-            </div>
-            <div class="d-flex items-center">
-              <strong id="initial-deposit" class="number">
-                0
-              </strong>
-              <div>
-                <strong class="usdc">
-                  &nbsp;🍌
-                </strong>
+              
+      
+              <div class="content-box">
+                <h3 class="text-start busd pb-1" style="color:var(--token); letter-spacing: 2px; font-size: x-large; font-family: kanit !important;display: flex;justify-content: center;font-weight: 700;">
+                </h3>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="stat">
+                      <div class="header text-center" style="font-size: 1.2rem;">
+                        <i class="ri-coins-fill"></i>&nbsp;
+                        <span>Initial Deposit:</span>
+                      </div>
+                      <div class="data text-center">
+                        <strong id="initial-deposit" class="number">0</strong>
+                        <strong class="usdc">🍌</strong>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="stat">
+                      <div class="header text-center" style="font-size: 1.2rem;">
+                        <i class="ri-coins-fill"></i>&nbsp;
+                        <span>Deposits + Interest:</span>
+                      </div>
+                      <div class="data text-center">
+                        <strong id="total-deposit" class="number">0</strong>
+                        <strong class="usdc">🍌</strong>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="stat">
+                      <div class="header text-center" style="font-size: 1.2rem;">
+                        <i class="ri-coins-fill"></i>&nbsp;
+                        <span>Total Withdrawn:</span>
+                      </div>
+                      <div class="data text-center">
+                        <strong id="total-withdrawn" class="number">0</strong>
+                        <strong class="usdc">🍌</strong>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="stat">
+                      <div class="header text-center" style="font-size: 1rem;">
+                        <i class="ri-coins-fill"></i>&nbsp;
+                        <span>Referrals (<span id="ref-count">0</span>) Rewards Received:</span>
+                      </div>
+                      <div class="data text-center">
+                        <strong id="referral-Reward" class="number">0</strong>
+                        <strong class="usdc">🍌</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="stat d-flex justify-between">
-            <div class="header">
-              <i class="ri-coins-fill">
-              </i>&nbsp;
-              <span>
-                Deposits + Interest :
-              </span>
-            </div>
-            <div class="d-flex items-center">
-              <strong id="total-deposit" class="number">
-                0
-              </strong>
-              <div>
-                <strong class="usdc">
-                  &nbsp;🍌
-                </strong>
-              </div>
-            </div>
-          </div>
-          <div class="stat d-flex justify-between">
-            <div class="header">
-              <i class="ri-coins-fill">
-              </i>&nbsp;
-              <span>
-                Total Withdrawn :
-              </span>
-            </div>
-            <div class="d-flex items-center">
-              <strong id="total-withdrawn" class="number">
-                0 
-              </strong>
-              <div>
-                <strong class="usdc">
-                  &nbsp;🍌
-                </strong>
-              </div>
-            </div>
-          </div>
-          <div class="stat d-flex justify-between">
-            <div class="header">
-              <i class="ri-coins-fill">
-              </i>&nbsp;
-              <span>
-                Referrals 
-              </span>
-              (<span id="ref-count">0</span>)
-              <span>  Rewards Received :</span>
-            </div>
-            <div class="d-flex items-center">
-              <strong id="referral-Reward" class="number">
-                0
-              </strong>
-              <div>
-                <strong class="usdc">
-                  &nbsp;🍌
-                </strong>
-              </div>
-            </div>
-          </div>
+              
+        
+        
           <hr>
           <div>
             <div>
@@ -279,56 +245,48 @@
             </div>
             <br>
           </div>
-          <div class=" justify-center">
-            <i ></i>
+          <div class="justify-center" style="font-size: 1.2rem;">
+            <i></i>
             <strong>
-              🍌  Balance  🍌
+              🍌 Balance 🍌
             </strong>
-            <div>
-              <span id="user-balance">
-                0
-              </span>
-              <span class="busd">
-                Bananas
-              </span>
+            <div style="font-size: 1.5rem;">
+              <span id="user-balance">0</span>
+              <span class="busd">Bananas</span>
             </div>
           </div>
+          
           <br>
           <hr/>
           <div class="first-box">
-          <div class="deposit-container">
-                <div class="btn-container">
-                    <strong style="padding-left: 5px; padding-bottom: 5px" ;>
-                      Approve
-                      <span class="busd">
-                        Bananas
-                      </span>
-                      <span class="usd">
-                        ( <span id="user-approved-spend">0</span> Bananas Approved)</span>
-                    
-                         </span>
-                      <input class="form-control" id="approve-spend" name="approved-spend" step="100" type="number" value="1">
-                    </strong>
-                    <button class="start-btn3" style="width: 100%;margin-bottom: 10px; margin-top: 15px;" id=""
-                      onclick="approveToken()" role="button" type="button" style="margin-top: 5px;">Approve</button> 
-                  </div>
-                <div class="btn-container">
-                  <strong style="padding-left: 5px; padding-bottom: 5px" ;>
-                    Deposit <span class="busd"> Bananas </span>
-                    <span class="usd">
-                      ( Min <span class="busd" id="min-deposit">0 </span>,
-                    </span>
-                    <span class="usd">
-                      Max <span class="busd" id="max-deposit">0</span> ) </span>
-                    <input class="form-control" id="busd-spend" name="buy-miners" onChange="updateBuyPrice()" step="1"
-                      type="number" value="100">
-                  </strong>
-                  <button class="start-btn3" style="width: 100%;margin-bottom: 10px; margin-top: 15px;" id="buy-eggs-btn"
-                    onclick="depositToken()" role="button" disabled>
-                    Enter Fountain
-                  </button>
-                </div>
+            <div class="deposit-container d-flex justify-content-between">
+              <div class="btn-container">
+                <strong style="padding-left: 5px; padding-bottom: 5px;">
+                  Approve <span class="busd">Bananas</span>
+                  <span class="usd">( <span id="user-approved-spend">0</span> Bananas Approved)</span>
+                  <input class="form-control" id="approve-spend" name="approved-spend" step="100" type="number" value="1">
+                </strong>
+                <button class="start-btn3" style="width: 100%; margin-bottom: 10px; margin-top: 15px;" 
+                        onclick="approveToken()" role="button" type="button">
+                  Approve
+                </button>
               </div>
+              <div class="btn-container">
+                <strong style="padding-left: 5px; padding-bottom: 5px;">
+                  Deposit <span class="busd">Bananas</span>
+                  <span class="usd">( Min <span class="busd" id="min-deposit">0 </span>,
+                    Max <span class="busd" id="max-deposit">0</span> )
+                  </span>
+                  <input class="form-control" id="busd-spend" name="buy-miners" onChange="updateBuyPrice()" step="1" type="number" value="100">
+                </strong>
+                <button class="start-btn3" style="width: 100%; margin-bottom: 10px; margin-top: 15px;" id="buy-eggs-btn"
+                        onclick="depositToken()" role="button" disabled>
+                  Enter Fountain
+                </button>
+              </div>
+            </div>
+          </div>
+          
             
             <hr />
             <div style="margin-top: 10px;">
@@ -346,30 +304,26 @@
                     ≈ $<span id="mined-usd" >0 </span> USD
                   </span> -->  
                   <br>  
-                  <div class="btn-container">
-                    <div style="padding-top: 6px;padding-bottom: 14px;">
-                      <button class="btn start-btn"
-                      style="width: 100%;background: transparent;border: 1px solid white;padding: 8px;margin-top: 5px;"
-                      id="withdraw" onclick="sellToken()" role="button" >
-                      Collect 
-                    </button>
-                  </div>
-                  <div>
-                    <button class="btn start-btn3" style="width: 100%;" id="reinvest" onclick="roll()"
-                      role="button">
-                      Compound
-                      <span class="compound"> 
-                        </span>
+                  <div class="btn-container d-flex justify-content-between">
+                    <div style=" width: 45%;">
+                      <button class="btn start-btn3" style="width: 100%;" id="withdraw" onclick="sellToken()" role="button">
+                        Collect
+                      </button>
+                    </div>
+                    <div style="width: 45%;">
+                      <button class="btn start-btn3" style="width: 100%;" id="reinvest" onclick="roll()" role="button">
+                        Compound
+                        <span class="compound"></span>
                       </button>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
+                  
             <hr />
           </div>
-          <div class="mt-1 text-center" style="padding: 10px; font-size: 15px; font-weight: 500;">
-            <span>After you have made a deposit using a referral link you can change the referrer address here.</span>
+          <div class=" text-center" style="padding: 10px; font-size: 16px; font-weight: 500; color: white;">
+            <strong>After you have made a deposit using a referral link you can change the referrer address here.
+          </div>
+          
             <div class="btn-container">
                 <strong style="padding-left: 5px; padding-bottom: 5px;">
                     <input class="form-control" id="new-referrer-address" name="new-referrer-address" type="text" placeholder="Enter new referrer address">

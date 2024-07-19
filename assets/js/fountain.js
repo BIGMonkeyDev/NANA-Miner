@@ -497,7 +497,7 @@ function depositToken(){
     }
 }
 
-function hatchEggs(){
+function roll(){
        
     contract.methods.compound().send({ from: currentAddr}).then(result => {
     refreshData()

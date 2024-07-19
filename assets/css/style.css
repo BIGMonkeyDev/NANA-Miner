@@ -4416,7 +4416,7 @@ summary {
   width: 1em;
   height: 1em;
   padding: .25em .25em;
-  color: #000;
+  color: #d6c6c6;
   background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
   border: 0;
   border-radius: .25rem;
@@ -8107,10 +8107,10 @@ summary {
 }
 
 :root {
-  --primary: #68fff7;
+  --primary: #634dc4;
   --secondary: rgba(255, 255, 255, 0.08);
   --secondary-dark: rgba(255, 252, 252, 0.945);
-  --token: #03a4cc;
+  --token: #c90cb9;
   --icons: #cfcfcf;
   --busd-color: rgb(250, 90, 183);
   --lines: rgb(255, 255, 255)
@@ -8340,7 +8340,7 @@ h6 {
   font-size: 21px;
   margin-bottom: 60px;
   margin-top: 50px;
-  background-color: #0083f6;
+  background-color: #10A9FD;
   box-shadow: 0 5px 20px rgb(255 255 255 / 30%), inset 0 0 0 rgb(0 0 0 / 32%);
   display: inline-block
 }
@@ -8574,24 +8574,24 @@ h6 {
   position: relative;
   text-align: left
 }
-
+ /* background of site */
 .content-box {
   --border-width: 3px;
   padding: 10px;
   margin: 0 auto;
-  border: 1px solid #000;
-  border-radius: var(--border-width);
-  background-color: var(--secondary);
-  max-width: 840px;
-  box-shadow: #258cfa 0 20px 30px -10px;
+  border: 1px solid #d10b0b00;
+  border-radius: var( );
+  background-color: var( );
+  max-width: 650px;
+  box-shadow: #cf0dbf 0 20px 50px -10px;
   height: auto;
   overflow-wrap: anywhere;
-  background: #222;
+  background: #0202027c;
   position: relative;
   z-index: 0;
   overflow: hidden;
   padding: 2rem;
-  border-radius: 15px
+  border-radius: 10px
   
 }
 
@@ -8604,7 +8604,7 @@ h6 {
   top: -50%;
   width: 200%;
   height: 200%;
-  background-color: var(--token)
+  background-color: var()
 }
 
 .content-box::after {
@@ -8615,10 +8615,10 @@ h6 {
   top: 6px;
   width: calc(100% - 12px);
   height: calc(100% - 12px);
-  background: #000000df;
+  background: #da0d0d00;
   border-radius: 15px
 }
-
+/* background of site */
 @keyframes rotate {
   100% {
     transform: rotate(1turn)
@@ -8641,7 +8641,7 @@ h6 {
   padding: 30px;
   border-radius: 15px;
   padding-bottom: 50px;
-  background-color: rgba(0, 0, 0, 0.694)
+  background-color: rgba(214, 208, 208, 0.694)
 }
 
 .top-info>:not(:first-child) {
@@ -8654,7 +8654,7 @@ h6 {
 }
 
 #hero .content-box .info-container {
-  color: #fff;
+  color: #31be1500;
   width: auto;
   margin: 0 auto
 }
@@ -8674,7 +8674,7 @@ h6 {
   display: flex;
   font-weight: 700;
   flex-wrap: wrap;
-  color: var(--token);
+  color: var();
   font-family: cursive !important
 }
 
@@ -8696,8 +8696,8 @@ h6 {
 }
 
 .stats-row-container .stat {
-  color: var(--token);
-  border: 1px solid var(--lines);
+  color: var();
+  border: 1px solid var();
   border-radius: 10px;
   width: auto
 }

@@ -266,7 +266,7 @@ mainLPPAir.methods.getReserves().call().then(reserves => {
             var busdMined = readableBUSD(earnings, 4);
             $("#mined").html(busdMined);
             var minedUsd = Number(farmTokenPriceInStable * busdMined).toFixed(2);
-            $('#token-price').html(`$${minedUsd}`);
+            $('#token-price').html(`${minedUsd}`);
         }).catch((err) => {
             console.log('getAvailableEarnings', err);
             throw err;

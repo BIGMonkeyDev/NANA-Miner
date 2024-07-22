@@ -183,7 +183,7 @@
               </div>
           </div>
       </div>
-
+      
     <!-- Personal Fountain Stats Section -->
 <div class="col-md-6">
   <div class="content-box personal-stats-box">
@@ -196,7 +196,7 @@
           <div class="row">
               <div class="col-md-6">
                   <div class="stat d-flex flex-column justify-content-center align-items-center">
-                      <img src="assets/img/burned.png" alt="Initial Deposit" class="stat-image" />
+                      <img src="assets/img/deposits.png" alt="Initial Deposit" class="stat-image" />
                       <div class="data">
                           <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="initial-deposit">-</strong>
                       </div>
@@ -204,7 +204,7 @@
               </div>
               <div class="col-md-6">
                   <div class="stat d-flex flex-column justify-content-center align-items-center">
-                      <img src="assets/img/burned.png" alt="Total Deposit" class="stat-image" />
+                      <img src="assets/img/depinterest.png" alt="Total Deposit" class="stat-image" />
                       <div class="data">
                           <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="total-deposit">-</strong>
                       </div>
@@ -212,7 +212,7 @@
               </div>
               <div class="col-md-6">
                   <div class="stat d-flex flex-column justify-content-center align-items-center">
-                      <img src="assets/img/burned.png" alt="Total Withdrawn" class="stat-image" />
+                      <img src="assets/img/totalwith.png" alt="Total Withdrawn" class="stat-image" />
                       <div class="data">
                           <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="total-withdrawn">-</strong>
                       </div>
@@ -220,7 +220,7 @@
               </div>
               <div class="col-md-6">
                   <div class="stat d-flex flex-column justify-content-center align-items-center">
-                      <img src="assets/img/burned.png" alt="Referral Rewards" class="stat-image" />
+                      <img src="assets/img/refreward.png" alt="Referral Rewards" class="stat-image" />
                       <div class="data">
                           <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="referral-Reward">-</strong>
                       </div>
@@ -228,7 +228,7 @@
               </div>
               <div class="col-md-6 mt-3">
                   <div class="stat d-flex flex-column justify-content-center align-items-center">
-                      <img src="assets/img/burned.png" alt="Referrer Address" class="stat-image" />
+                      <img src="assets/img/refaddress.png" alt="Referrer Address" class="stat-image" />
                       <div class="data">
                           <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="referrer-address">No referrer set</strong>
                       </div>
@@ -236,7 +236,7 @@
               </div>
               <div class="col-md-6 mt-3">
                   <div class="stat d-flex flex-column justify-content-center align-items-center">
-                      <img src="assets/img/burned.png" alt="New Data Point" class="stat-image" />
+                      <img src="assets/img/referrals.png" alt="New Data Point" class="stat-image" />
                       <div class="data">
                           <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="ref-count">-</strong>
                       </div>
@@ -244,14 +244,10 @@
               </div>
           </div>
       </div>
-  </div>
-</div>
-
-
-                  
-
-               
-          <hr>
+    </div>
+  </div>  
+  <div class="mt-4"></div>
+  <hr>
           <div>
             <div>
               <h6 class="text-center">
@@ -265,7 +261,7 @@
                    Interest is first taxed 15% then the balance is taxed the additional tax per tier. This tier tax system allows for a longer protocol. 
               <hr/>
             </div>
-            <br>
+           
           </div>
 
 
@@ -325,33 +321,33 @@
             
             <!-- Action Buttons and Referral Section -->
 <div class="row mt-3">
-  <div class="col-md-2">
-      <button class="btn start-btn3" style="width: 100%; margin-bottom: 10px;" id="withdraw" onclick="sellToken()" role="button">
-          Collect
-      </button>
-      <button class="btn start-btn3" style="width: 100%; margin-top: 10px;" id="reinvest" onclick="roll()" role="button">
-          Compound
-      </button>
-  </div>
-  <div class="col-md-10">
+  <div class="col-md-8">
       <div class="btn-container">
           <input class="form-control" id="new-referrer-address" name="new-referrer-address" type="text" placeholder="Enter new referrer address" style="margin-bottom: 10px;">
           <button class="start-btn3" style="width: 100%;" id="approve-referrer-btn" onclick="approveRef()" role="button">
               Approve New Referrer
           </button>
-      </div>
-    </div>
-    <div class=" text-center" style="padding: 10px; font-size: 16px; font-weight: 500; color: white;">
-      <strong>After you have made a deposit using a referral link you can change the referrer address here.
-    </div>
-  </div>
-  </div>
+        </div></div>
+  <div class="col-md-4">
+    <button class="btn start-btn3" style="width: 100%; margin-bottom: 6px;" id="withdraw" onclick="sellToken()" role="button">
+        Collect
+    </button>
+    <button class="btn start-btn3" style="width: 100%; margin-top: 4px;" id="reinvest" onclick="roll()" role="button">
+        Compound
+    </button>
 </div>
+
+
+
 
         
 
+</div>
+<div class="text-center" style="padding: 10px; font-size: 16px; font-weight: 500; color: white;">
+    <strong>After you have made a deposit using a referral link you can change the referrer address here.</strong>
+</div>
+</div>
           
-          <hr />
           <div class="col-lg-12 referral-link">
             <span>
               <i class="bi-check2-square"></i>

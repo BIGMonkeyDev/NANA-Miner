@@ -234,7 +234,7 @@ mainLPPAir.methods.getReserves().call().then(reserves => {
 
         // Assuming farmReserve0 is the farm token
         const farmTokenPriceInNative = web3.utils.fromWei(farmReserve1) / web3.utils.fromWei(farmReserve0);
-        const farmTokenPriceInStable = farmTokenPriceInNative * nativePriceInStable;
+        priceInUSD = farmTokenPriceInNative * nativePriceInStable;
 
         
 
@@ -242,20 +242,33 @@ mainLPPAir.methods.getReserves().call().then(reserves => {
         contract.methods.getAvailableEarnings(currentAddr).call().then(function (earnings) {
             var busdMined = readableBUSD(earnings, 4);
             $("#mined").html(busdMined);
-            var minedUsd = Number(farmTokenPriceInStable * busdMined).toFixed(2);
+            var minedUsd = Number(priceInUSD * busdMined).toFixed(2);
             $('#token-price').html(`${minedUsd}`);
         }).catch((err) => {
             console.log('getAvailableEarnings', err);
             throw err;
         });
 
+        tokenContract.methods.balanceOf(currentAddr).call().then(userBalance => {
+            var amt = readableBUSD(userBalance, 4);
+            
+            $('#user-balance').html(roundNum(amt));
+        
+            // Calculate USD value using global priceInUSD
+            var userusd = Number(priceInUSD * amt).toFixed(2);
+            $('#user-bal-usd').html(`${userusd}`);
+        
+        }).catch((err) => {
+            console.log('balanceOf', err);
+        });
+
     }).catch(err => {
         console.log('getReserves for farm token', err);
     });
 
-}).catch(err => {
+    }).catch(err => {
     console.log('getReserves for native token', err);
-});
+    });
 
 
 
@@ -312,16 +325,8 @@ mainLPPAir.methods.getReserves().call().then(reserves => {
         });
         return;
     } else {
-        tokenContract.methods.balanceOf(currentAddr).call().then(userBalance => {
-            let amt = web3.utils.fromWei(userBalance);
-            usrBal = userBalance;
-            $('#user-balance').html(roundNum(amt))
-            // calcNumTokens(roundNum(amt)).then(usdValue => {
-            //     $('#user-balance-usd').html(roundNum(usdValue))
-            // })
-        }).catch((err) => {
-            console.log('balanceOf', err)
-        });
+        
+        
 
         tokenContract.methods.allowance(currentAddr, fountainAddress).call().then(result => {
             spend = web3.utils.fromWei(result)

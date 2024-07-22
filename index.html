@@ -42,6 +42,7 @@
   <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+  
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet" />
   <link href="assets/css/styleNew.css" rel="stylesheet" />
@@ -59,6 +60,10 @@
     }
     e.preventDefault();
 });
+
+
+
+
 
   </script>
 
@@ -78,7 +83,7 @@
                   <a class="nav-link text-light" href="https://prime-ape.com/"><strong>The Farm</strong></a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link text-light" href="https://bafybeicb2hlad6zs4kc4yvn5xbbzti6krjtpoxrysg42d4e5s5oubbipum.ipfs.dweb.link/#/address/0xd8291a971182eE4363Fa708e8006424F586CaCB4"><strong>Fountain Contract</strong></a>
+                  <a class="nav-link text-light" href="https://bafybeicb2hlad6zs4kc4yvn5xbbzti6krjtpoxrysg42d4e5s5oubbipum.ipfs.dweb.link/#/address/0xB19D9375a964455F39D404fBC03Ff4c9aF986780"><strong>Fountain Contract</strong></a>
               </li>
               <div class="dropdown">
                 <button class="dropbtn">Socials</button>
@@ -117,22 +122,28 @@
                   <div class="text-center" style="margin-bottom: 10px;">
                     <img src="assets/img/banner.png" alt="The Fountain" style="max-width: 100%; height: auto;"/>
                 </div>
-                
-            <div class="stats-row-container justify-center" data-aos="zoom-in">
-              <div class="justify-center">
-                <h3 class="text-center texting" style="margin-left: 5px;">              
-                  Statistics
-                </h3>
-                <br>
-                <div class="container">
+              
+            
+                  
+                  
+                 <!-- Container for Stats and Personal Stats -->
+<div class="container-fluid">
+  <div class="row">
+      <!-- Stats Section -->
+      <div class="col-md-6">
+          <div class="content-box stats-box">
+              <h3 class="text-start busd pb-1" style="color:var(--token); letter-spacing: 2px; font-size: x-large; font-family: kanit !important; display: flex; justify-content: center; font-weight: 700;">
+                  <!-- Title or Icon Here -->
+              </h3>
+              <div class="text-center">
+                  <h3 class="text-center texting" style="margin-left: 5px;">Stats</h3>
+                  <hr>
                   <div class="row">
                       <div class="col-md-6">
                           <div class="stat d-flex flex-column justify-content-center align-items-center">
                               <img src="assets/img/refrwrd.png" alt="Total Referrals" class="stat-image" />
                               <div class="data">
-                                  <strong class="number mb-md-2 busd"
-                                      style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;"
-                                      id="total-ref">-</strong>
+                                  <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="total-ref">-</strong>
                               </div>
                           </div>
                       </div>
@@ -140,127 +151,106 @@
                           <div class="stat d-flex flex-column justify-content-center align-items-center">
                               <img src="assets/img/contract.png" alt="Contract Balance" class="stat-image" />
                               <div class="data">
-                                  <strong class="number mb-md-2 busd"
-                                      style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;"
-                                      id="contract-balance">-</strong>
+                                  <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="contract-balance">-</strong>
                               </div>
                           </div>
                       </div>
-                  </div>
-                  <div class="row mt-3">
-                      <div class="col-md-12">
+                      <div class="col-md-6">
+                          <div class="stat d-flex flex-column justify-content-center align-items-center">
+                              <img src="assets/img/circulating.png" alt="Circulating" class="stat-image" />
+                              <div class="data">
+                                  <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="circulating">-</strong>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="stat d-flex flex-column justify-content-center align-items-center">
+                              <img src="assets/img/burned.png" alt="Burned" class="stat-image" />
+                              <div class="data">
+                                  <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="burned">-</strong>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-12 mt-3">
                           <div class="stat d-flex flex-column justify-content-center align-items-center">
                               <img src="assets/img/total.png" alt="Total Users" class="stat-image" />
                               <div class="data">
-                                  <strong class="number mb-md-2 busd"
-                                      style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;"
-                                      id="total-players">-</strong>
+                                  <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="total-players">-</strong>
                               </div>
                           </div>
                       </div>
                   </div>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                    <div class="stat d-flex flex-column justify-content-center align-items-center">
-                        <img src="assets/img/circulating.png " alt="Circulating" class="stat-image" />
-                        <div class="data">
-                            <strong class="number mb-md-2 busd"
-                                style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;"
-                                id="circulating">-</strong>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="stat d-flex flex-column justify-content-center align-items-center">
-                        <img src="assets/img/burned.png" alt="Burned" class="stat-image" />
-                        <div class="data">
-                            <strong class="number mb-md-2 busd"
-                                style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;"
-                                id="burned">-</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-              
-            <br>
-            <div class="text-center">
-              <h3 class="text-center texting" style="margin-left: 5px;">              
-                Personal Fountain Stats
-              </h3>
-              <hr>
-              
-      
-              <div class="content-box">
-                <h3 class="text-start busd pb-1" style="color:var(--token); letter-spacing: 2px; font-size: x-large; font-family: kanit !important; display: flex; justify-content: center; font-weight: 700;">
-                 
-                </h3>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="stat">
-                            <div class="header text-center" style="font-size: 1.2rem;">
-                                <i class="ri-coins-fill"></i>&nbsp;
-                                <span>Initial Deposit:</span>
-                            </div>
-                            <div class="data text-center">
-                                <strong id="initial-deposit" class="number">0</strong>
-                                <strong class="usdc">🍌</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="stat">
-                            <div class="header text-center" style="font-size: 1.2rem;">
-                                <i class="ri-coins-fill"></i>&nbsp;
-                                <span>Deposits + Interest:</span>
-                            </div>
-                            <div class="data text-center">
-                                <strong id="total-deposit" class="number">0</strong>
-                                <strong class="usdc">🍌</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="stat">
-                            <div class="header text-center" style="font-size: 1.2rem;">
-                                <i class="ri-coins-fill"></i>&nbsp;
-                                <span>Total Withdrawn:</span>
-                            </div>
-                            <div class="data text-center">
-                                <strong id="total-withdrawn" class="number">0</strong>
-                                <strong class="usdc">🍌</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="stat">
-                            <div class="header text-center" style="font-size: 1rem;">
-                                <i class="ri-coins-fill"></i>&nbsp;
-                                <span>Referrals (<span id="ref-count">0</span>) Rewards Received:</span>
-                            </div>
-                            <div class="data text-center">
-                                <strong id="referral-Reward" class="number">0</strong>
-                                <strong class="usdc">🍌</strong>
-                            </div>
-                        </div>
-                      </div>
-               
-                <!-- New row for referrer data -->
-                <div class="row">
-                    <div class="col-md-12">
-                      <div class="stat">
-                        <div class="header text-center" style="font-size: 1.5rem;">
-                        <div class="referrer-info text-center">
-                            <span>Referrer Address:</span>
-                            <p id="referrer-address">No referrer set</p>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-        
+      </div>
+
+    <!-- Personal Fountain Stats Section -->
+<div class="col-md-6">
+  <div class="content-box personal-stats-box">
+      <h3 class="text-start busd pb-1" style="color:var(--token); letter-spacing: 2px; font-size: x-large; font-family: kanit !important; display: flex; justify-content: center; font-weight: 700;">
+          <!-- Title or Icon Here -->
+      </h3>
+      <div class="text-center">
+          <h3 class="text-center texting" style="margin-left: 5px;">Personal Fountain Stats</h3>
+          <hr>
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="stat d-flex flex-column justify-content-center align-items-center">
+                      <img src="assets/img/burned.png" alt="Initial Deposit" class="stat-image" />
+                      <div class="data">
+                          <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="initial-deposit">-</strong>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="stat d-flex flex-column justify-content-center align-items-center">
+                      <img src="assets/img/burned.png" alt="Total Deposit" class="stat-image" />
+                      <div class="data">
+                          <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="total-deposit">-</strong>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="stat d-flex flex-column justify-content-center align-items-center">
+                      <img src="assets/img/burned.png" alt="Total Withdrawn" class="stat-image" />
+                      <div class="data">
+                          <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="total-withdrawn">-</strong>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="stat d-flex flex-column justify-content-center align-items-center">
+                      <img src="assets/img/burned.png" alt="Referral Rewards" class="stat-image" />
+                      <div class="data">
+                          <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="referral-Reward">-</strong>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6 mt-3">
+                  <div class="stat d-flex flex-column justify-content-center align-items-center">
+                      <img src="assets/img/burned.png" alt="Referrer Address" class="stat-image" />
+                      <div class="data">
+                          <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="referrer-address">No referrer set</strong>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6 mt-3">
+                  <div class="stat d-flex flex-column justify-content-center align-items-center">
+                      <img src="assets/img/burned.png" alt="New Data Point" class="stat-image" />
+                      <div class="data">
+                          <strong class="number mb-md-2 busd" style="-webkit-text-stroke: 1px #ffffff; color: #ffffff; letter-spacing: 2px; font-size: 25px;" id="ref-count">-</strong>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+                  
+
+               
           <hr>
           <div>
             <div>
@@ -277,104 +267,90 @@
             </div>
             <br>
           </div>
-          <div class="justify-center" style="font-size: 1.2rem;">
-            <i></i>
-            <strong>
-              🍌 Balance 🍌
-            </strong>
-            <div style="font-size: 1.5rem;">
-              <strong id="user-balance" style="color: #2dc4d8;">0</strong>
-              
-            </div>
-          </div>
-          
-          <br>
-          
-          <div class="first-box">
-            <div class="deposit-container d-flex justify-content-between">
-              <div class="btn-container" data-width="48%">
-                <strong style="padding-left: 5px; padding-bottom: 5px;">
-                  Approve <span class="busd">Bananas</span>
-                  <span class="usd">( <span id="user-approved-spend">0</span> Bananas Approved)</span>
-                  <input class="form-control" id="approve-spend" name="approved-spend" step="100" type="number" value="1">
-                </strong>
-                <button class="start-btn3" style="width: 100%; margin-bottom: 10px; margin-top: 15px;" 
-                        onclick="approveToken()" role="button" type="button">
-                  Approve
-                </button>
-              </div>
-              <div class="btn-container" data-width="48%">
-                <strong style="padding-left: 5px; padding-bottom: 5px;">
-                  Deposit <span class="busd">Bananas</span>
-                  <span class="usd">( Min <span class="busd" id="min-deposit">0 </span>,
-                    Max <span class="busd" id="max-deposit">0</span> )
-                  </span>
-                  <input class="form-control" id="busd-spend" name="buy-miners" onChange="updateBuyPrice()" step="1" type="number" value="100">
-                </strong>
-                <button class="start-btn3" style="width: 100%; margin-bottom: 10px; margin-top: 15px;" id="buy-eggs-btn"
-                        onclick="depositToken()" role="button" disabled>
-                  Enter Fountain
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          
-            
-            
-            <div style="margin-top: 10px;">
-              <div class="deposit-container">
-                <div class="miners-info" style="margin-bottom: unset;">
-                  <div>
-                    <div style="font-size: 25px;">
-                      <i></i>
-                      <span><strong class="busd">🍌 Interest 🍌</strong></span>
-                    </div>
-                    <strong id="mined" style="color: #2dc4d8;">0</strong> <!-- Change the color here -->
-                  </div>
-                </div>
-              </div>
-            </div>
-                  <span class="usd" style="font-size: 14px;">
-                    ≈ $<span id="token-price" >0 </span> USD
-                    </span>   
-                    <br>    
-                  <div class="first-box">
-                    <div class="deposit-container d-flex justify-content-between">
-                      <div class="btn-container" style="width: 50%;">
+
+
+          <div class="content-box">
+            <!-- Approve, Deposit, and Balance Section -->
+            <div class="row">
+                <!-- Approve Section -->
+                <div class="col-md-4">
+                    <div class="btn-container">
                         <strong style="padding-left: 5px; padding-bottom: 5px;">
-                          <button class="btn start-btn3" style="width: 100%; margin-bottom: 10px; margin-top: 15px;" id="withdraw" onclick="sellToken()" role="button">
-                            Collect
-                          </button>
+                            Approve <span class="busd">Bananas</span>
+                            <span class="usd">( <span id="user-approved-spend">0</span> Bananas Approved)</span>
+                            <input class="form-control" id="approve-spend" name="approved-spend" step="100" type="number" value="1">
                         </strong>
-                      </div>
-                      <div class="btn-container" style="width: 50%;">
-                        <strong style="padding-left: 7px; padding-bottom: 5px;">
-                          <button class="btn start-btn3" style="width: 100%; margin-bottom: 10px; margin-top: 15px;" id="reinvest" onclick="roll()" role="button">
-                            Compound
-                            <span class="compound"></span>
-                          </button>
-                        </strong>
-                      </div>
+                        <button class="start-btn3" style="width: 100%; margin-bottom: 10px; margin-top: 15px;" 
+                                onclick="approveToken()" role="button" type="button">
+                            Approve
+                        </button>
                     </div>
-                  </div>
-                  
-                  
-                  
-            
-          </div>
-          <div class=" text-center" style="padding: 10px; font-size: 16px; font-weight: 500; color: white;">
-            <strong>After you have made a deposit using a referral link you can change the referrer address here.
-          </div>
-          
-            <div class="btn-container">
-                <strong style="padding-left: 5px; padding-bottom: 5px;">
-                    <input class="form-control" id="new-referrer-address" name="new-referrer-address" type="text" placeholder="Enter new referrer address">
-                </strong>
-                <button class="start-btn3" style="width: 100%; margin-bottom: 10px; margin-top: 15px;" id="approve-referrer-btn"
-                    onclick="approveRef()" role="button">Approve New Referrer</button>
+                </div>
+                
+                <!-- Deposit Section -->
+                <div class="col-md-4">
+                    <div class="btn-container">
+                        <strong style="padding-left: 5px; padding-bottom: 5px;">
+                            Deposit <span class="busd">Bananas</span>
+                            <span class="usd">( Min <span class="busd" id="min-deposit">0 </span>, Max <span class="busd" id="max-deposit">0</span> )
+                            </span>
+                            <input class="form-control" id="busd-spend" name="buy-miners" onChange="updateBuyPrice()" step="1" type="number" value="100">
+                        </strong>
+                        <button class="start-btn3" style="width: 100%; margin-bottom: 10px; margin-top: 15px;" id="buy-eggs-btn"
+                                onclick="depositToken()" role="button" disabled>
+                            Enter Fountain
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Balance Section -->
+                <div class="col-md-4 text-center">
+                    <h3 class="text-center texting" style="font-size: 1.2rem;">
+                        <strong>🍌 Balance 🍌</strong>
+                    </h3>
+                    <div style="font-size: 1.5rem;">
+                        <strong id="user-balance" style="color: #2dc4d8;">0</strong>
+                    </div>
+                    <div class="miners-info">
+                        <div style="font-size: 25px;">
+                            <span><strong class="busd">🍌 Interest 🍌</strong></span>
+                        </div>
+                        <strong id="mined" style="color: #2dc4d8;">0</strong>
+                    </div>
+                    <span class="usd" style="font-size: 14px;">
+                        ≈ $<span id="token-price">0</span> USD
+                    </span>
+                </div>
             </div>
-        </div>
+            
+            <!-- Action Buttons and Referral Section -->
+<div class="row mt-3">
+  <div class="col-md-2">
+      <button class="btn start-btn3" style="width: 100%; margin-bottom: 10px;" id="withdraw" onclick="sellToken()" role="button">
+          Collect
+      </button>
+      <button class="btn start-btn3" style="width: 100%; margin-top: 10px;" id="reinvest" onclick="roll()" role="button">
+          Compound
+      </button>
+  </div>
+  <div class="col-md-10">
+      <div class="btn-container">
+          <input class="form-control" id="new-referrer-address" name="new-referrer-address" type="text" placeholder="Enter new referrer address" style="margin-bottom: 10px;">
+          <button class="start-btn3" style="width: 100%;" id="approve-referrer-btn" onclick="approveRef()" role="button">
+              Approve New Referrer
+          </button>
+      </div>
+    </div>
+    <div class=" text-center" style="padding: 10px; font-size: 16px; font-weight: 500; color: white;">
+      <strong>After you have made a deposit using a referral link you can change the referrer address here.
+    </div>
+  </div>
+  </div>
+</div>
+
+        
+
+          
           <hr />
           <div class="col-lg-12 referral-link">
             <span>

@@ -16,11 +16,11 @@ var tokenContract;
 
 var farmLPPair;
 
-const fountainAddress = '0x4aB2EfF175EAb9174a4FA70849F14f1AFCb37E74';                        //mainnet contract
+const fountainAddress = ' ';                        //mainnet contract
 
-const LPAddress = '0x09d9589205f5bDCa717Ec887704fee309BcfD821';                              // LP Address
+const LPAddress = '0xd3cC40772454a1eEadd36a69e31067646C04B0cB';                              // LP Address
 const deadAddress = '0x000000000000000000000000000000000000dEaD';                            // DEAD Address   
-const FARM_TOKEN_ADDRESS = '0x34E76FA9cd853D185DfDB4770F96A059F328E5C0';                     //project Token
+const FARM_TOKEN_ADDRESS = '0xC6B28B2E3Bf9fF26299D540a4D654F7ade4dFdB0';                     //project Token
 const FACTORY_PAIR_ADDRESS = "0x146E1f1e060e5b5016Db0D118D2C5a11A240ae32";                   //Main Blockchain LP
 
 

@@ -16,7 +16,7 @@ var tokenContract;
 
 var farmLPPair;
 
-const fountainAddress = ' ';                        //mainnet contract
+const fountainAddress = '0x0000000000000000000000000000000000000000';                        //mainnet contract
 
 const LPAddress = '0xd3cC40772454a1eEadd36a69e31067646C04B0cB';                              // LP Address
 const deadAddress = '0x000000000000000000000000000000000000dEaD';                            // DEAD Address   
@@ -219,7 +219,7 @@ function refreshData() {
         console.log('balanceOf', err)
     });
 
-    // Fetch native token price
+   // Fetch native token price
 mainLPPAir.methods.getReserves().call().then(reserves => {
     const reserve0 = reserves[0];
     const reserve1 = reserves[1];
@@ -233,10 +233,11 @@ mainLPPAir.methods.getReserves().call().then(reserves => {
         const farmReserve1 = farmReserves[1];
 
         // Assuming farmReserve0 is the farm token
-        const farmTokenPriceInNative = web3.utils.fromWei(farmReserve1) / web3.utils.fromWei(farmReserve0);
-        priceInUSD = farmTokenPriceInNative * nativePriceInStable;
+        const farmTokenPriceInNative = web3.utils.fromWei(farmReserve0) / web3.utils.fromWei(farmReserve1);
+        const priceInUSD = farmTokenPriceInNative * nativePriceInStable;
 
-        
+        // Update the #price element with priceInUSD
+        $('#price').html(`${priceInUSD.toFixed(2)}`);
 
         // Fetch available earnings and calculate their USD value
         contract.methods.getAvailableEarnings(currentAddr).call().then(function (earnings) {
@@ -266,9 +267,9 @@ mainLPPAir.methods.getReserves().call().then(reserves => {
         console.log('getReserves for farm token', err);
     });
 
-    }).catch(err => {
+}).catch(err => {
     console.log('getReserves for native token', err);
-    });
+});
 
 
 

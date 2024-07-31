@@ -16,7 +16,7 @@ var tokenContract;
 
 var farmLPPair;
 
-const fountainAddress = '0x0000000000000000000000000000000000000000';                        //mainnet contract
+const fountainAddress = '';                        //mainnet contract
 
 const LPAddress = '0xd3cC40772454a1eEadd36a69e31067646C04B0cB';                              // LP Address
 const deadAddress = '0x000000000000000000000000000000000000dEaD';                            // DEAD Address   
